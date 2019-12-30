@@ -1,0 +1,24 @@
+<launch>
+
+ <arg name="model" default="$(find fourth_robot_description)/robots/fourth_robot.urdf.xacro"/>
+ <arg name="paused" default="false"/>
+ <arg name="use_sim_time" default="true"/>
+ <arg name="gui" default="true"/>
+ <arg name="headless" default="false"/>
+ <arg name="debug" default="false"/>
+
+
+ <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <arg name="world_name" value="$(find fourth_robot_gazebo)/worlds/clearpath_playpen.world"/>
+  <arg name="debug" value="$(arg debug)" />
+  <arg name="gui" value="$(arg gui)" />
+  <arg name="paused" value="$(arg paused)"/>
+  <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+  <arg name="headless" value="$(arg headless)"/>
+ </include>
+
+
+ <node pkg="omni_pkg" name="main" type="main"/>
+ <node pkg="omni_pkg" name="rim" type="rim"/>
+ <node pkg="omni_pkg" name="roller" type="roller"/>
+</launch>

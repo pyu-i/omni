@@ -1,0 +1,2 @@
+omni_pkg
+-DCATKIN_DEVEL_PREFIX=/home/riku/omni/devel -DCMAKE_INSTALL_PREFIX=/home/riku/omni/install -G Unix Makefiles

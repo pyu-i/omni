@@ -1,0 +1,8 @@
+prefix=/home/riku/omni/devel
+
+Name: omni_urdf
+Description: Description of omni_urdf
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/riku/omni/devel/lib 
+Requires: 

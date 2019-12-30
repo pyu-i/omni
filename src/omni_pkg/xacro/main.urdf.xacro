@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot
+	xmlns:xacro="http://www.ros.org/wiki/xacro"
+	name="omni_pkg"
+>
+
+	<xacro:include filename="$(find omni_pkg)/xacro/rim.urdf.xacro"/>
+
+	<link name="origin_link"/>
+	<link name="base_link">
+
+	<inertial>
+
+		<mass value="8"/>
+		<inertia
+			ixx="1.895158"
+			ixy="0"
+			ixz="0"
+			iyy="1.895158"
+			iyz="0"
+			izz="3.672949"
+		/>
+
+	</inertial>
+	<visual>
+
+		<geometry>
+
+			<mesh filename="package://omni_pkg/mesh/base.stl"/>
+
+		</geometry>
+		<material name="base_material">
+
+			<color rgba="1 1 1 1"/>
+
+		</material>
+
+	</visual>
+	<collision>
+
+		<geometry>
+
+			<mesh filename="package://omni_pkg/mesh/base.stl"/>
+
+		</geometry>
+
+	</collision>
+
+	</link>
+	<joint
+		name="base_joint"
+		type="fixed"
+	>
+
+		<parent link="origin_link" />
+		<child link="base_link" />
+		<origin
+			xyz="0 0 0.0909625"
+		/>
+
+	</joint>
+	<xacro:rim_macro
+		name="left"
+		color="0.3 0 0"
+		xyz="-0.165843864 0.09575 0"
+		rpy="1.570796326794896 0 1.047197551196597"
+	/>
+	<xacro:rim_macro
+		name="back"
+		color="0 0.3 0"
+		xyz="0 -0.1915 0"
+		rpy="1.570796326794896 0 3.141592653589793"
+	/>
+	<xacro:rim_macro
+		name="right"
+		color="0 0 0.3"
+		xyz="0.165843864 0.09575 0"
+		rpy="1.570796326794896 0 -1.047197551196597"
+	/>
+	<!--gazebo>
+
+		<plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+
+			<robotNamespace>/omni_pkg</robotNamespace>
+			<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+			<legacyModeNS>true</legacyModeNS>
+		</plugin>
+
+	</gazebo-->
+
+</robot>

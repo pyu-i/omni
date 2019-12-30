@@ -1,0 +1,8 @@
+prefix=/home/riku/omni/install
+
+Name: omni_pkg
+Description: Description of omni_pkg
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/riku/omni/install/lib 
+Requires: 

@@ -1,0 +1,75 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+	<xacro:macro
+		name="roller_macro"
+		params="parent name xyz rpy"
+	>
+
+		<link name="roller_${name}_${parent}_rim_link">
+
+			<inertial>
+
+				<mass value="0.4"/>
+				<inertia
+					ixx="0.006626"
+					ixy="0"
+					ixz="0"
+					iyy="0.006626"
+					iyz="0"
+					izz="0.003849"
+				/>
+
+			</inertial>
+			<visual>
+
+				<geometry>
+
+					<mesh filename="package://omni_pkg/mesh/roller.stl"/>
+
+				</geometry>
+				<material name="roller_material">
+
+					<color rgba="0.1 0.1 0.1 1"/>
+
+				</material>
+
+			</visual>
+			<collision>
+
+				<geometry>
+
+					<mesh filename="package://omni_pkg/mesh/roller.stl"/>
+
+				</geometry>
+
+			</collision>
+
+		</link>
+
+		<gazebo reference="roller_${name}_${parent}_rim_link">
+			<kp>1000000.0</kp>
+			<kd>1.0</kd>
+			<mu1>1</mu1>
+			<mu2>1</mu2>
+		</gazebo>
+
+
+		<joint
+			name="roller_${name}_${parent}_rim_joint"
+			type="continuous"
+		>
+
+			<parent link="${parent}_rim_link"/>
+			<child link="roller_${name}_${parent}_rim_link"/>
+			<axis xyz="0 0 1"/>
+			<origin
+				xyz="${xyz}"
+				rpy="${rpy}"
+			/>
+			<dynamics damping="0.0001" friction="0.00015"/>
+		</joint>
+
+	</xacro:macro>
+
+</robot>
